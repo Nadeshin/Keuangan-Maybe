@@ -1,0 +1,233 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #E3F2FD;
+  --card: #FFFFFF;
+  --primary: #2196F3;
+  --accent: #90CAF9;
+  --text: #0D47A1;
+  --primary-glow: rgba(33, 150, 243, 0.35);
+  --primary-light: rgba(33, 150, 243, 0.12);
+  --mesh-blob-1: rgba(33, 150, 243, 0.12);
+  --mesh-blob-2: rgba(144, 202, 249, 0.10);
+  --card-radius: 22px;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Ambient subtle gradient mesh in the background (modern semi AI-slop) */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 15% 15%, var(--mesh-blob-1) 0%, transparent 45%),
+    radial-gradient(circle at 85% 75%, var(--mesh-blob-2) 0%, transparent 50%),
+    radial-gradient(circle at 50% 40%, var(--primary-light) 0%, transparent 60%);
+  filter: blur(40px);
+  opacity: 0.95;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+/* Typography styles */
+.font-display {
+  font-family: 'Plus Jakarta Sans', 'Sora', system-ui, sans-serif;
+}
+
+.num-tabular {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+/* Hero Balance Gradient Text */
+.text-gradient-hero {
+  background: linear-gradient(135deg, var(--text) 30%, var(--primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Glow effects & Micro-interactions */
+.btn-glow {
+  box-shadow: 0 4px 18px -2px var(--primary-glow);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-glow:active {
+  transform: scale(0.97);
+}
+
+.btn-press {
+  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.18s ease;
+}
+
+.btn-press:active {
+  transform: scale(0.96);
+}
+
+/* Glassmorphic card styling based on themes */
+.theme-card {
+  position: relative;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+/* Casual: 22px rounded, soft friendly shadows, clean highlight border */
+.theme-casual,
+.theme-casual body {
+  --card-radius: 22px;
+  font-family: 'Nunito', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.theme-casual .theme-card {
+  border-radius: var(--card-radius);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 
+    0 10px 25px -4px rgba(0, 0, 0, 0.04),
+    0 4px 10px -2px rgba(0, 0, 0, 0.02),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.dark.theme-casual .theme-card {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 
+    0 12px 28px -4px rgba(0, 0, 0, 0.35),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.theme-casual .theme-btn {
+  border-radius: 14px;
+}
+
+/* Profesional: 14px rounded, high density, crisp subtle borders */
+.theme-profesional,
+.theme-profesional body {
+  --card-radius: 14px;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.theme-profesional .theme-card {
+  border-radius: var(--card-radius);
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.06), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
+}
+
+.dark.theme-profesional .theme-card {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.theme-profesional .theme-btn {
+  border-radius: 8px;
+}
+
+/* Glass: 24px rounded, heavy frosted blur, glowing edges */
+.theme-glass,
+.theme-glass body {
+  --card-radius: 24px;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.theme-glass .theme-card {
+  border-radius: var(--card-radius);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 
+    0 8px 32px 0 rgba(0, 0, 0, 0.08),
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.9);
+}
+
+.dark.theme-glass .theme-card {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 
+    0 12px 36px 0 rgba(0, 0, 0, 0.4),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.theme-glass .theme-btn {
+  border-radius: 18px;
+  backdrop-filter: blur(10px);
+}
+
+/* Floating Pill Navigation */
+.floating-nav-pill {
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 
+    0 12px 32px -4px rgba(0, 0, 0, 0.1),
+    0 4px 12px -2px rgba(0, 0, 0, 0.05);
+}
+
+.dark .floating-nav-pill {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 14px 36px -4px rgba(0, 0, 0, 0.45);
+}
+
+/* Smooth Skeleton Shimmer */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.skeleton-shimmer {
+  position: relative;
+  overflow: hidden;
+  background-color: rgba(148, 163, 184, 0.16);
+}
+
+.skeleton-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 255, 255, 0.25) 20%,
+    rgba(255, 255, 255, 0.5) 60%,
+    rgba(255, 255, 255, 0)
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+/* Shake Animation for Incorrect PIN */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+
+.animate-shake {
+  animation: shake 0.4s ease-in-out;
+}
+
+/* Utility to hide scrollbars */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}

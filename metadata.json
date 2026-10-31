@@ -1,0 +1,6 @@
+{
+  "name": "Pencatatan Keuangan Pribadi",
+  "description": "Aplikasi pencatatan keuangan pribadi mobile-first tanpa login dengan proteksi PIN Gate, terhubung Google Apps Script, Google Sheets, dan notifikasi WhatsApp.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
